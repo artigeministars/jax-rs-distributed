@@ -1,2 +1,4 @@
 # jax-rs-distrubed
-jax-rs implementation using jersey,postresql
+
+```markdown
+jax-rs implementation using jersey,postresql,redis
