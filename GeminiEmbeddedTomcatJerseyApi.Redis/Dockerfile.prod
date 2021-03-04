@@ -1,0 +1,5 @@
+FROM openjdk:15
+COPY ./target/GeminiEmbeddedTomcatJerseyApiExample-1.0-SNAPSHOT.jar /opt/lib/
+EXPOSE 8025
+ENTRYPOINT ["/usr/bin/java"]
+CMD ["-jar", "/opt/lib/GeminiEmbeddedTomcatJerseyApiExample-1.0-SNAPSHOT.jar"]

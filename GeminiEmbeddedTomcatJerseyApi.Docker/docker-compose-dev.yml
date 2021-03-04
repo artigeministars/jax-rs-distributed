@@ -1,0 +1,75 @@
+﻿version: "3.9"
+services:
+
+  jerseyapi:
+    container_name: jerseyapi_container
+    image: gemini/jerseyapi
+    build: 
+      context: '../GeminiEmbeddedTomcatJerseyApi'
+      dockerfile: Dockerfile
+    ports:
+      - '8026:8025'
+    volumes: 
+      - type: bind
+        source: '../GeminiEmbeddedTomcatJerseyApi/target/archive-tmp'
+        target: '/opt/lib/'
+    links: 
+      - redis
+    depends_on: 
+      - redis
+    networks:
+      - jerseyapi
+
+  redis:
+     container_name: redis_jersey_container
+     build:
+       context: ../GeminiEmbeddedTomcatJerseyApi.Redis
+       dockerfile: Dockerfile
+     image: gemini/redis_jersey_image
+     command: redis-server /usr/local/etc/redis/redis.conf
+     ports:
+       - '6380:6379'
+     restart: on-failure
+     volumes:
+       - ../GeminiEmbeddedTomcatJerseyApi.Redis/redis-data:/var/lib/redis
+       - ../GeminiEmbeddedTomcatJerseyApi.Redis/conf/redis.conf:/usr/local/etc/redis/redis.conf
+     networks:
+        node_net:
+          ipv4_address: 172.28.1.4      
+
+  postgres:
+     container_name: postgres_jersey_container
+     build:
+       context: '../GeminiEmbeddedTomcatJerseyApi.PostgreSql'
+       dockerfile: Dockerfile
+     environment:
+      - POSTGRES_USER=jersey_gemini
+      - POSTGRES_PASSWORD=jersey_password
+      - POSTGRES_DB=jersey_db
+     volumes: 
+        - type: bind
+          source: ../GeminiEmbeddedTomcatJerseyApi.PostgreSql/data
+          target: /var/lib/postgresql/data
+        - type: bind 
+          source: ../GeminiEmbeddedTomcatJerseyApi.PostgreSql/conf/postgresql.conf
+          target: /usr/local/etc/postgres/postgresql.conf 
+        - type: bind
+          source: ../GeminiEmbeddedTomcatJerseyApi.PostgreSql/initialDb/
+          target: /docker-entrypoint-initdb.d/
+     command: "postgres -c config_file=/usr/local/etc/postgres/postgresql.conf"
+     restart: always
+     ports:
+       - "5433:5432" 
+     links: 
+      - jerseyapi
+     networks:
+      - jerseyapi
+
+# networking for the Redis container
+networks:
+  node_net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.28.0.0/16
+  jerseyapi: 
