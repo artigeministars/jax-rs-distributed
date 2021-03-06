@@ -1,0 +1,5 @@
+GeminiEmbeddedTomcatJerseyApi/target
+GeminiEmbeddedTomcatJerseyApi/.idea
+GeminiEmbeddedTomcatJerseyApi.Docker/docker-compose.yml.*
+GeminiEmbeddedTomcatJerseyApi.PostgreSql/data
+GeminiEmbeddedTomcatJerseyApi.Redis/redis-data
