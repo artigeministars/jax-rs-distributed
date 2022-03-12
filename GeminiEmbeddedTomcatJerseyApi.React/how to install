@@ -1,0 +1,45 @@
+npm init -y
+npm install react react-dom -S
+npm install typescript -D
+npm install @types/react @types/react-dom -D
+tsc --init
+npm install --save-dev @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript @babel/plugin-transform-runtime @babel/runtime
+## npm install --save-dev eslint eslint-plugin-react eslint-plugin-react-hooks @typescript-eslint/parser @typescript-eslint/eslint-plugin
+npm install -D eslint eslint-plugin-import typescript-eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-import-resolver-typescript eslint-plugin-react eslint-plugin-react-hooks
+npm install --save-dev webpack webpack-cli
+npm install --save-dev webpack-dev-server @types/webpack-dev-server
+npm install --save-dev babel-loader
+npm install --save-dev html-webpack-plugin
+npm install --save-dev ts-node // for ts webpack config file extension
+npm install --save-dev fork-ts-checker-webpack-plugin @types/fork-ts-checker-webpack-plugin
+npm install --save-dev eslint-webpack-plugin
+npm install --save-dev clean-webpack-plugin
+npm install --save-dev mini-css-extract-plugin @types/mini-css-extract-plugin
+npm install --save-dev css-minimizer-webpack-plugin @types/css-minimizer-webpack-plugin
+npm install ts-loader css-loader style-loader sass source-map-loader -D
+npm install -D style-loader
+npm install -D postcss-loader sass-loader postcss-preset-env autoprefixer
+npm install eslint-loader -D
+npm install ts-loader -D
+npm i -D @types/webpack-bundle-analyzer webpack-bundle-analyzer
+npm install github-release-notes -g
+npm i -D husky lint-staged
+npx husky install
+npx husky add .husky/pre-commit "npx --no-install lint-staged"
+npm install axios --save
+npm install -S react-router-dom @types/react-router-dom
+## add ["@babel/plugin-syntax-dynamic-import"] to .babelrc plugin part
+npm install @loadable/component --save
+npm i --save-dev @types/loadable__component
+npm install @material-ui/core @material-ui/icons -S
+npm install -D @types/material-ui
+## npm install @mui/icons-material -S
+npm install -D @types/redux @types/react-redux
+npm install -S redux react-redux @reduxjs/toolkit
+npm install --save-dev redux-devtools-extension
+## npm uninstall redux redux-thunk reselect
+## npm uninstall @types/webpack
+To be clear, we're still using these packages and need to have them installed. 
+However, because Redux Toolkit depends on them, they'll be installed automatically 
+when we install @reduxjs/toolkit, 
+so we don't need to have the other packages specifically listed in our package.json file.

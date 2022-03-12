@@ -1,0 +1,1 @@
+export * as generalModels from "@models/general";

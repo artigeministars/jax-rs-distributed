@@ -1,0 +1,1 @@
+export * as generalServices from "@services/general";

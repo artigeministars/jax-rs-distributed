@@ -1,0 +1,12 @@
+version: '3.9'
+
+services:
+
+  samplereactprod:
+    image: webpackreactprodimg
+    container_name: webpackreactprodcontainer
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    ports:
+      - '1339:80'
