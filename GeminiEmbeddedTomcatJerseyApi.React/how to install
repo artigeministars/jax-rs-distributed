@@ -33,7 +33,9 @@ npm install @loadable/component --save
 npm i --save-dev @types/loadable__component
 npm install @material-ui/core @material-ui/icons -S
 npm install -D @types/material-ui
-## npm install @mui/icons-material -S
+npm install --save @mui/material @mui/icons-material
+npm install --save @emotion/react @emotion/styled
+## npm install --save-dev @emotion/babel-plugin
 npm install -D @types/redux @types/react-redux
 npm install -S redux react-redux @reduxjs/toolkit
 npm install --save-dev redux-devtools-extension
