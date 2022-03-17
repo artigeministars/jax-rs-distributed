@@ -14,7 +14,7 @@ const config: Configuration = {
 	  	path: path.resolve("./dist"),
 	  	filename: "[name].[contenthash].js",
     publicPath: "",
-    assetModuleFilename: 'images/[hash][ext][query]'
+    assetModuleFilename: 'images/avatar/[hash][ext][query]'
 	  },
 	  module: {
 	  	rules: [
@@ -65,6 +65,8 @@ const config: Configuration = {
       "@axios":path.resolve("./src/axios/"),
       "@services":path.resolve("./src/services/"),
       "@models":path.resolve("./src/models/"),
+      "@assets":path.resolve("./src/assets/"),
+      "@routes":path.resolve("./src/routes/")
     },
     extensions: [".tsx", ".ts", ".js",".scss",".css"],
   },

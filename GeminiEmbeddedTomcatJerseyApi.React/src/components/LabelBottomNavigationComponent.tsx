@@ -16,7 +16,7 @@ export default function LabelBottomNavigation() {
 
   return (
     <Container fixed>
-    <BottomNavigation sx={{ width: 500 }} value={value} onChange={handleChange}>
+    <BottomNavigation sx={{ width: '100%' , justifyContent: 'space-between' , mb: 10, mt: 4 , border: 1 , borderColor: 'info.main' , borderRadius: 2 }} value={value} onChange={handleChange}>
       <BottomNavigationAction
         label="Recents"
         value="recents"

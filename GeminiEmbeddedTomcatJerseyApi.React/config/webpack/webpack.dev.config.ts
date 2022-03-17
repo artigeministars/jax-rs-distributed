@@ -12,6 +12,7 @@ const config: Configuration = {
 	output: {
 		publicPath: "/",
 		path: path.resolve("./dist"),
+    assetModuleFilename: 'images/avatar/[hash][ext][query]'
 		},
  	entry: "./src/index.tsx",
  	module: {
@@ -71,6 +72,8 @@ const config: Configuration = {
       "@axios":path.resolve("./src/axios/"),
       "@services":path.resolve("./src/services/"),
       "@models":path.resolve("./src/models/"),
+      "@assets":path.resolve("./src/assets/"),
+      "@routes":path.resolve("./src/routes/")
     },
     extensions: [".tsx", ".ts", ".js",".scss",".css",".json"],
   },

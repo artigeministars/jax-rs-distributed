@@ -6,7 +6,9 @@
 		   "@utils/*": ["src/utils/*"],
 		   "@axios/*": ["src/axios/*"],
 		   "@services/*": ["src/services/*"],
-		   "@models/*": ["src/models/*"]
+		   "@models/*": ["src/models/*"],
+		   "@assets/*":["src/assets/*"],
+		   "@routes/*":["src/routes/*"]
          },
         "module": "commonjs",
         "target": "es5",
