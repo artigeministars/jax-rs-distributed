@@ -9,4 +9,5 @@ export * as OnLoginPage from "@components/OnLoginAppBarComponent";
 export * as LoginPage from "@components/LoginComponent";
 export * as NoMatchPage from "@components/NoMatchComponent";
 export * as LogoutPage from "@components/LogoutComponent";
+export * as BasicCard from "@components/CardComponent";
 

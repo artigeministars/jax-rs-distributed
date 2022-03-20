@@ -11,7 +11,7 @@ import LoginForm from '@components/forms/LoginFormComponent';
     <OnLoginAppBar />
     <SimpleContainer >
     <div>
-    <h2 className="App-header">Logged in! </h2>
+    <h2 className="App-header">Loggin Form! </h2>
     <LoginForm />
     </div>
     </SimpleContainer>

@@ -17,9 +17,20 @@ export enum POST_CONSTANTS {
     POSTBASEURL = "https:/localhost/"
 }
 
+export enum USER_CONSTANTS {
+    POSTBASEURL = "https:/localhost:8025"
+}
+
 export enum POST_CRUD {
     addPosts = "/Posts",
     getPosts = "/Posts",
     deletePost = "/Posts",
     putPost = "/Posts"
+}
+
+export enum USER_CRUD {
+    addUsers = "/users",
+    getUsers = "/users",
+    deleteUser = "/users",
+    putUser = "/users"
 }

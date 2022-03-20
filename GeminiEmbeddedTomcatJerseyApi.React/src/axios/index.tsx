@@ -1,8 +1,8 @@
 import axios from "axios";
-import {POST_CONSTANTS} from "@utils/constants";
+import {USER_CONSTANTS} from "@utils/constants";
 
 export const baseAxios = axios.create({
-    baseURL: POST_CONSTANTS.POSTBASEURL
+    baseURL: USER_CONSTANTS.POSTBASEURL
 });
 
 export interface IAxiosPostsConfig {
@@ -12,7 +12,7 @@ export interface IAxiosPostsConfig {
 }
 
 export const generalAxiosConfig: IAxiosPostsConfig = {
-    baseURL: POST_CONSTANTS.POSTBASEURL,
+    baseURL: USER_CONSTANTS.POSTBASEURL,
     // cancelToken: cancelTokenSource.token,
     headers: {
         "Content-Type": "application/json"

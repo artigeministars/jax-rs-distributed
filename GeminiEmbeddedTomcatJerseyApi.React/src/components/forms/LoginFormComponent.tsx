@@ -8,22 +8,37 @@ import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import Typography from '@mui/material/Typography';
+import BasicCard from "@components/CardComponent";
+import { Location, useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from "@components/Auth";
 
-interface State {
+
+export interface UserState {
   name: string;
   password: string;
   showPassword: boolean;
 }
 
 export default function InputAdornments() {
-  const [values, setValues] = React.useState<State>({
+  const [values, setValues] = React.useState<UserState>({
     name: '',
     password: '',
     showPassword: false,
   });
 
+  const navigate = useNavigate();
+  const location: Location = useLocation();
+  const auth = useAuth();
+
+  const state = location.state as { from: { pathname: string } };
+
+  const from = state?.from?.pathname || "/";
+
+
   const handleChange =
     (prop: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
+     // const name = prop.target.name;
       setValues({ ...values, [prop]: event.target.value });
     };
 
@@ -38,12 +53,41 @@ export default function InputAdornments() {
     event.preventDefault();
   };
 
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+    const userName = formData.get("username") as string;
+    const password = formData.get("password") as string;
+    setValues({
+      ...values,
+      name: userName,
+      password: password
+    });
+    const newUser: Pick<IUser, "username" | "password"> = {userName,password};
+    // validate user section
+
+    auth.signin( newUser , () => { 
+      navigate(from, { replace: true}); 
+    });
+
+  }
+
+ const formEl = React.useRef(null);
+
   return (
+
+    <BasicCard>
     <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
-      <div>
+      <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+         Login Form
+         <p>You must log in to view the page at {from}</p>
+       </Typography>
+       <form onSubmit={handleSubmit} ref={formEl}>
+      <div>   
       <TextField
           required
-          fullWidth
+          name="username"
           id="outlined-required"
           label="Username"
           color="secondary"
@@ -53,11 +97,12 @@ export default function InputAdornments() {
         />
          </div>
          <div>
-        <FormControl required fullWidth  sx={{p: 2}} variant="outlined">
+        <FormControl required   sx={{p: 2}} variant="outlined">
           <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
           <OutlinedInput
             id="outlined-adornment-password"
             type={values.showPassword ? 'text' : 'password'}
+            name="password"
             value={values.password}
             onChange={handleChange('password')}
             endAdornment={
@@ -76,6 +121,8 @@ export default function InputAdornments() {
           />
         </FormControl>
       </div>
+      </form>
     </Box>
+    </BasicCard>
   );
 }
