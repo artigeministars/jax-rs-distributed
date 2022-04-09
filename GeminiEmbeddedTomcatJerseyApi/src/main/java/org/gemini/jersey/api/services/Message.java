@@ -9,6 +9,6 @@ public class Message {
     @GET
     @Path("/main")
     public String getMainMessage(){
-        return "get main message...";
+        return "get main message (updated)...";
     }
 }

@@ -12,6 +12,7 @@ import Typography from '@mui/material/Typography';
 import BasicCard from "@components/CardComponent";
 import { Location, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from "@components/Auth";
+import IUser from '@models/user';
 
 
 export interface UserState {
